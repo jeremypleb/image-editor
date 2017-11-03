@@ -15,22 +15,23 @@
 
 <div id='app' ng-app='app' ng-controller='mainCtrl'>
 
-    <h1 class = "siteHeader">Image Editor</h1>
+    <div class="title-div"><h2 class="siteHeader">Image Editor</h2></div>
 
-    <br><br><br>
     <h2 class = "addImage"> Enter A New Image</h2>
 
     <div class = "addImageForm">
-      <form id="images" ng-submit="addImage()">
-          Name: <input type="text" ng-model="formData.name" value=""><br>
-          Url: <input type="url" ng-model="formData.url" value=""><br>
-          Description: <input type="text" ng-model="formData.description" value=""><br><br>
-          <input type="submit" value="Submit">
+      <form id="images" ng-submit="addImage()" class="form-group">
+        <label for="addName">Name:</label>
+        <input type="text" ng-model="formData.name" id="addName" class="form-control"><br>
+        <label for="URL">Url:</label>
+        <input type="url" ng-model="formData.url" id="URL" class="form-control"><br>
+        <label for="Des">Description:</label>
+        <input type="text" ng-model="formData.description" id="Des" class="form-control"><br>
+        <input type="submit" value="Submit" class="btn btn-primary" style="width: 100%;">
       </form>
     </div>
 
-    <br><br>
-
+    <div class="all-images">
     <div ng-repeat = "i in images" class="card image-box">
       <div class="image-container"><img class="card-img-top" ng-src="{{i.url}}" alt="Card image" style="filter: blur({{i.blur / 10}}px) brightness({{i.brightness}}%) contrast({{i.contrast}}%) grayscale({{i.grayscale}}%); width:100%"></div>
       <div class="card-body" style="">
@@ -38,6 +39,7 @@
         <p class="card-text">{{i.description}}<br>Last Edited: {{i.lastEdit}}</p>
         <button class="btn btn-primary" style="width:100%" ng-click="editPhoto(i)">Edit Picture</button>
       </div>
+    </div>
     </div>
 
     <div class="modal-shadow" ng-show="editMode" ng-cloak></div>
